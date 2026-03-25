@@ -59,7 +59,7 @@ export function ProductCard({ product, searchTerm }) {
           </div>
           <button
             type="button"
-            className="primary-button"
+            className="primary-button product-card__button"
             onClick={() =>
               addToCart({
                 id: product.id,

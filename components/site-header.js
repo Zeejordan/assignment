@@ -46,11 +46,15 @@ export function SiteHeader() {
               <span>Cart</span>
               <strong className="nav-count">{itemCount}</strong>
             </Link>
-            <span className="nav-pill nav-pill--static" aria-label={`${wishlist.length} wishlist items`}>
+            <Link
+              href="/wishlist"
+              className={`nav-pill ${pathname === '/wishlist' ? 'is-current' : 'nav-pill--static'}`}
+              aria-current={pathname === '/wishlist' ? 'page' : undefined}
+            >
               <Icon name="heart" />
               <span>Wishlist</span>
               <strong className="nav-count">{wishlist.length}</strong>
-            </span>
+            </Link>
           </nav>
         </div>
       </div>
