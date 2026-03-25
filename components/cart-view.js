@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { Icon } from '@/components/icons';
 import { useStore } from '@/components/store-provider';
 
 export function CartView() {
@@ -16,6 +17,7 @@ export function CartView() {
           Browse the storefront, add products, and the total price will update automatically here.
         </p>
         <Link href="/" className="primary-button">
+          <Icon name="arrow-left" />
           Continue shopping
         </Link>
       </section>
@@ -52,6 +54,7 @@ export function CartView() {
                     className="secondary-button"
                     onClick={() => removeFromCart(item.id)}
                   >
+                    <Icon name="trash" />
                     Remove
                   </button>
                 </div>
@@ -64,7 +67,7 @@ export function CartView() {
                       onClick={() => decreaseQuantity(item.id)}
                       aria-label={`Decrease quantity for ${item.title}`}
                     >
-                      -
+                      <Icon name="minus" />
                     </button>
                     <strong>{item.quantity}</strong>
                     <button
@@ -73,7 +76,7 @@ export function CartView() {
                       onClick={() => increaseQuantity(item.id)}
                       aria-label={`Increase quantity for ${item.title}`}
                     >
-                      +
+                      <Icon name="plus" />
                     </button>
                   </div>
                   <strong className="price-tag">${(item.price * item.quantity).toFixed(2)}</strong>
@@ -99,6 +102,7 @@ export function CartView() {
           Free shipping unlocks automatically above $150 to demonstrate derived pricing logic.
         </p>
         <Link href="/" className="primary-button" style={{ width: '100%', marginTop: 18 }}>
+          <Icon name="bag" />
           Add more items
         </Link>
       </aside>

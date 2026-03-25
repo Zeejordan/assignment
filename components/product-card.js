@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { Icon } from '@/components/icons';
 import { useStore } from '@/components/store-provider';
 import { highlightMatch } from '@/lib/products';
 
@@ -19,7 +20,7 @@ export function ProductCard({ product, searchTerm }) {
           onClick={() => toggleWishlist(product.id)}
           aria-label={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
         >
-          {isWishlisted ? '♥' : '♡'}
+          <Icon name={isWishlisted ? 'heart-filled' : 'heart'} />
         </button>
         <Link href={`/product/${product.id}`}>
           <Image
@@ -35,7 +36,10 @@ export function ProductCard({ product, searchTerm }) {
       <div className="product-card__body">
         <div className="product-card__meta">
           <span className="category-badge">{product.category}</span>
-          <span className="rating-badge">★ {product.rating.toFixed(1)}</span>
+          <span className="rating-badge">
+            <Icon name="star" />
+            {product.rating.toFixed(1)}
+          </span>
         </div>
 
         <Link href={`/product/${product.id}`}>
@@ -66,6 +70,7 @@ export function ProductCard({ product, searchTerm }) {
               })
             }
           >
+            <Icon name="bag" />
             Add to cart
           </button>
         </div>

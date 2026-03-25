@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Icon } from '@/components/icons';
 import { useStore } from '@/components/store-provider';
 
 export function SiteHeader() {
@@ -11,26 +12,47 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="site-header__inner">
-        <Link href="/" className="brand-lockup">
-          <span className="brand-mark">Northstar Market</span>
-          <span className="brand-copy">Curated demo storefront with local product data</span>
+        <Link href="/" className="brand-lockup brand-panel">
+          <span className="brand-badge">
+            <Icon name="sparkles" />
+            Curated Essentials
+          </span>
+          <div className="brand-main">
+            <span className="brand-mark">Northstar Market</span>
+            <span className="brand-copy">Curated local storefront built with Next.js</span>
+          </div>
         </Link>
 
-        <nav className="header-actions" aria-label="Primary">
-          <Link href="/" className="nav-pill" aria-current={pathname === '/' ? 'page' : undefined}>
-            Shop
-          </Link>
-          <Link
-            href="/cart"
-            className="nav-pill"
-            aria-current={pathname === '/cart' ? 'page' : undefined}
-          >
-            Cart <strong>{itemCount}</strong>
-          </Link>
-          <span className="nav-pill" aria-label={`${wishlist.length} wishlist items`}>
-            Wishlist <strong>{wishlist.length}</strong>
-          </span>
-        </nav>
+        <div className="header-utility">
+          <div className="header-note">
+            <span className="header-note__dot" />
+            Fresh finds for everyday shopping
+          </div>
+          <nav className="header-actions" aria-label="Primary">
+            <Link
+              href="/"
+              className={`nav-pill ${pathname === '/' ? 'is-current' : ''}`}
+              aria-current={pathname === '/' ? 'page' : undefined}
+            >
+              <Icon name="grid" />
+              <span>Shop</span>
+            </Link>
+            <Link
+              href="/cart"
+              className={`nav-pill ${pathname === '/cart' ? 'is-current' : ''}`}
+              aria-current={pathname === '/cart' ? 'page' : undefined}
+            >
+              <Icon name="bag" />
+              <span>Cart</span>
+              <strong className="nav-count">{itemCount}</strong>
+            </Link>
+            <span className="nav-pill nav-pill--static" aria-label={`${wishlist.length} wishlist items`}>
+              <Icon name="heart" />
+              <span>Wishlist</span>
+              <strong className="nav-count">{wishlist.length}</strong>
+            </span>
+          </nav>
+        </div>
       </div>
     </header>
   );

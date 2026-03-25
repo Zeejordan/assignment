@@ -1,3 +1,5 @@
+import { Icon } from '@/components/icons';
+
 export function ProductFilters({
   categories,
   selectedCategory,
@@ -12,7 +14,12 @@ export function ProductFilters({
   return (
     <aside className="panel filters-panel">
       <p className="eyebrow">Filters</p>
-      <h2 className="panel-heading">Refine the catalog</h2>
+      <h2 className="panel-heading">
+        <span className="title-with-icon">
+          <Icon name="filter" />
+          Refine the catalog
+        </span>
+      </h2>
       <p className="panel-copy">
         Combine category, minimum rating, and maximum price for a practical assignment-ready
         product explorer.
@@ -42,7 +49,7 @@ export function ProductFilters({
       </div>
 
       <div className="filter-group">
-        <strong>Price range</strong>
+        <strong className="inline-label"><Icon name="tag" /> Price range</strong>
         <input
           type="range"
           min={priceBounds.min}
@@ -58,7 +65,7 @@ export function ProductFilters({
       </div>
 
       <div className="filter-group">
-        <strong>Minimum rating</strong>
+        <strong className="inline-label"><Icon name="star" /> Minimum rating</strong>
         <div className="choice-chips">
           {[0, 1, 2, 3, 4].map((rating) => (
             <button
@@ -75,6 +82,7 @@ export function ProductFilters({
 
       <div className="filter-group">
         <button type="button" className="secondary-button" onClick={onReset}>
+          <Icon name="filter" />
           Reset all filters
         </button>
       </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
+import { Icon } from '@/components/icons';
 import { ProductCard } from '@/components/product-card';
 import { ProductFilters } from '@/components/product-filters';
 import { filterProducts, sortProducts } from '@/lib/products';
@@ -63,9 +64,11 @@ export function ProductExplorer({ products, categories, priceBounds }) {
           </p>
           <div className="hero-actions">
             <a href="#catalog" className="primary-button">
+              <Icon name="sparkles" />
               Explore products
             </a>
             <Link href="/cart" className="secondary-button">
+              <Icon name="bag" />
               Open cart
             </Link>
           </div>
@@ -75,7 +78,7 @@ export function ProductExplorer({ products, categories, priceBounds }) {
           <article className="metric-card">
             <p className="eyebrow">Catalog</p>
             <p className="metric-value">{products.length}</p>
-            <p className="helper-copy">Products loaded from `dummyApi.json`.</p>
+            <p className="helper-copy">Products</p>
           </article>
           <article className="metric-card">
             <p className="eyebrow">Categories</p>
@@ -105,30 +108,36 @@ export function ProductExplorer({ products, categories, priceBounds }) {
                 <label className="sr-only" htmlFor="product-search">
                   Search products
                 </label>
-                <input
-                  id="product-search"
-                  className="search-input"
-                  type="search"
-                  value={searchInput}
-                  onChange={(event) => setSearchInput(event.target.value)}
-                  placeholder="Search by title, category, brand, or tags"
-                />
+                <div className="input-wrap">
+                  <Icon name="search" />
+                  <input
+                    id="product-search"
+                    className="search-input"
+                    type="search"
+                    value={searchInput}
+                    onChange={(event) => setSearchInput(event.target.value)}
+                    placeholder="Search by title, category, brand, or tags"
+                  />
+                </div>
               </div>
               <div style={{ width: '220px', maxWidth: '100%' }}>
                 <label className="sr-only" htmlFor="sort-products">
                   Sort products
                 </label>
-                <select
-                  id="sort-products"
-                  className="sort-select"
-                  value={sortBy}
-                  onChange={(event) => setSortBy(event.target.value)}
-                >
-                  <option value="featured">Featured</option>
-                  <option value="price-asc">Price: low to high</option>
-                  <option value="price-desc">Price: high to low</option>
-                  <option value="rating-desc">Rating</option>
-                </select>
+                <div className="input-wrap">
+                  <Icon name="sort" />
+                  <select
+                    id="sort-products"
+                    className="sort-select"
+                    value={sortBy}
+                    onChange={(event) => setSortBy(event.target.value)}
+                  >
+                    <option value="featured">Featured</option>
+                    <option value="price-asc">Price: low to high</option>
+                    <option value="price-desc">Price: high to low</option>
+                    <option value="rating-desc">Rating</option>
+                  </select>
+                </div>
               </div>
             </div>
 
@@ -174,6 +183,7 @@ export function ProductExplorer({ products, categories, priceBounds }) {
                 explore the full catalog again.
               </p>
               <button type="button" className="primary-button" onClick={resetFilters}>
+                <Icon name="filter" />
                 Reset filters
               </button>
             </div>

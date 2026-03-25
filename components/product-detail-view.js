@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Icon } from '@/components/icons';
 import { useStore } from '@/components/store-provider';
 import { ProductCard } from '@/components/product-card';
 
@@ -38,8 +39,8 @@ export function ProductDetailView({ product, relatedProducts }) {
             <p className="eyebrow">{product.category}</p>
             <h1 className="detail-title">{product.title}</h1>
             <div className="detail-meta">
-              <span className="rating-badge">★ {product.rating.toFixed(1)}</span>
-              <span className="stock-badge">{product.availabilityStatus}</span>
+              <span className="rating-badge"><Icon name="star" />{product.rating.toFixed(1)}</span>
+              <span className="stock-badge"><Icon name="sparkles" />{product.availabilityStatus}</span>
             </div>
             <p className="detail-price">${product.price.toFixed(2)}</p>
             <p className="hero-copy">{product.description}</p>
@@ -58,6 +59,7 @@ export function ProductDetailView({ product, relatedProducts }) {
                   })
                 }
               >
+                <Icon name="bag" />
                 Add to cart
               </button>
               <button
@@ -65,6 +67,7 @@ export function ProductDetailView({ product, relatedProducts }) {
                 className={`secondary-button ${isWishlisted ? 'is-active' : ''}`}
                 onClick={() => toggleWishlist(product.id)}
               >
+                <Icon name={isWishlisted ? 'heart-filled' : 'heart'} />
                 {isWishlisted ? 'Remove wishlist' : 'Save to wishlist'}
               </button>
             </div>
@@ -73,11 +76,11 @@ export function ProductDetailView({ product, relatedProducts }) {
           <article className="detail-card">
             <h2 className="section-title">Product info</h2>
             <div className="detail-facts">
-              <div className="fact-row"><strong>Brand</strong><span>{product.brand || 'Independent label'}</span></div>
-              <div className="fact-row"><strong>SKU</strong><span>{product.sku}</span></div>
-              <div className="fact-row"><strong>Shipping</strong><span>{product.shippingInformation}</span></div>
-              <div className="fact-row"><strong>Warranty</strong><span>{product.warrantyInformation}</span></div>
-              <div className="fact-row"><strong>Return policy</strong><span>{product.returnPolicy}</span></div>
+              <div className="fact-row"><strong className="inline-label"><Icon name="tag" />Brand</strong><span>{product.brand || 'Independent label'}</span></div>
+              <div className="fact-row"><strong className="inline-label"><Icon name="grid" />SKU</strong><span>{product.sku}</span></div>
+              <div className="fact-row"><strong className="inline-label"><Icon name="truck" />Shipping</strong><span>{product.shippingInformation}</span></div>
+              <div className="fact-row"><strong className="inline-label"><Icon name="shield" />Warranty</strong><span>{product.warrantyInformation}</span></div>
+              <div className="fact-row"><strong className="inline-label"><Icon name="arrow-left" />Return policy</strong><span>{product.returnPolicy}</span></div>
             </div>
           </article>
 
@@ -88,7 +91,7 @@ export function ProductDetailView({ product, relatedProducts }) {
                 <div key={`${review.reviewerEmail}-${review.date}`} className="review-card">
                   <div className="review-card__top">
                     <strong>{review.reviewerName}</strong>
-                    <span className="rating-badge">★ {review.rating}</span>
+                    <span className="rating-badge"><Icon name="star" />{review.rating}</span>
                   </div>
                   <p className="clamped-text">{review.comment}</p>
                 </div>
@@ -105,6 +108,7 @@ export function ProductDetailView({ product, relatedProducts }) {
             <h2 className="section-title">You may also like</h2>
           </div>
           <Link href="/" className="secondary-button">
+            <Icon name="arrow-left" />
             Back to shop
           </Link>
         </div>
