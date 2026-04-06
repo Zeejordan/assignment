@@ -7,7 +7,7 @@ export function generateStaticParams() {
     id: String(product.id)
   }));
 }
-
+// new changes to track on github destop
 export default async function ProductDetailPage({ params }) {
   const { id } = await params;
   const product = getProductById(Number(id));
